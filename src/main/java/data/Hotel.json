@@ -1,0 +1,21 @@
+[ {
+  "local" : "Manaus Centro",
+  "estado" : "Amazonas",
+  "preco" : 250.00,
+  "id" : 1
+}, {
+  "local" : "Boa Viagem",
+  "estado" : "Pernambuco",
+  "preco" : 310.00,
+  "id" : 4
+}, {
+  "local" : "Copacabana",
+  "estado" : "Rio de Janeiro",
+  "preco" : 450.75,
+  "id" : 5
+}, {
+  "local" : "Paulista",
+  "estado" : "São Paulo",
+  "preco" : 390.40,
+  "id" : 6
+} ]
