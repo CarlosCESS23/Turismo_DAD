@@ -13,7 +13,7 @@ public class ServidorRegistro {
         try {
             IHotelService hotelService = new HotelServiceImpl();
 
-            String host = "localhost";
+            String host = "10.100.32.79";
             int porta = 1000;
 
             Registry registro = LocateRegistry.createRegistry(porta);
