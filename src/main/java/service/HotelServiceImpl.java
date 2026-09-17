@@ -14,10 +14,11 @@ public class HotelServiceImpl extends UnicastRemoteObject implements IHotelServi
     List<Hotel> hoteis = new ArrayList<>();
 
     public void adicionarHoteis(){
-        this.hoteis.add(new Hotel("Fortaleza", 250.00));
+        this.hoteis.add(new Hotel("Boa Vista", 250.00));
         this.hoteis.add(new Hotel("Belém", 100.00));
-        this.hoteis.add(new Hotel("São Paulo", 220.00));
-        this.hoteis.add(new Hotel("Manaus", 150.00));
+        this.hoteis.add(new Hotel("Macapá", 220.00));
+        this.hoteis.add(new Hotel("Palmas", 150.00));
+        this.hoteis.add(new Hotel("Porto Velho", 120.00));
     }
 
     public HotelServiceImpl() throws RemoteException{
