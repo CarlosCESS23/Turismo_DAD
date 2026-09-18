@@ -15,6 +15,7 @@ public class Pacote {
     public Pacote(){
         listas_itens = new ArrayList<Item>();
     }
+
     public Pacote(String origem,String destino){
         this.listas_itens = new ArrayList<>();
         this.destino = destino;
@@ -35,6 +36,7 @@ public class Pacote {
     public void removerItem(Item item){
         this.listas_itens.remove(item);
     }
+
     public double getValorTotal(){
         double valorTotal = this.listas_itens.stream()
                 .mapToDouble(Item::getValor).sum();
@@ -58,6 +60,14 @@ public class Pacote {
              this.valorTotal = this.valorTotal - (this.valorTotal * 0.20);
              return;
          }
-
+    }
+    @Override
+    public String toString() {
+        return "\nPacote{" +
+                "origem='" + origem + '\'' +
+                ", destino='" + destino + '\'' +
+                ",\n listas_itens=" + listas_itens +
+                ",\n valorTotal=" + getValorTotal() +
+                '}';
     }
 }
