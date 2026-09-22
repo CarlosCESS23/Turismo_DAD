@@ -42,6 +42,16 @@ public class HotelServiceImpl extends UnicastRemoteObject implements IHotelServi
                 return h.getValorDiaria() * dias;
             }
         }
-        throw new RemoteException("Essa cidade não está inclusa nesse pacote turístico.");
+        throw new RemoteException();
     }
+    public double consultarHotel(String cidade) throws RemoteException{
+
+        for(Hotel h: hoteis){
+            if(h.getCidade().equalsIgnoreCase(cidade)){
+                return h.getValorDiaria();
+            }
+        }
+        throw new RemoteException("Essa cidade não foi encontrada!");
+    }
+
 }
