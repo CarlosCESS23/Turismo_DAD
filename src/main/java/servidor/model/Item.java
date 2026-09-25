@@ -1,6 +1,6 @@
-package model;
+package servidor.model;
 
-import tipos.TipoItem;
+import servidor.tipos.TipoItem;
 
 
 public class Item {

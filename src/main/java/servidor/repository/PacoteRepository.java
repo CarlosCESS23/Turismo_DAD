@@ -1,6 +1,6 @@
-package repository;
+package servidor.repository;
 
-import model.Pacote;
+import servidor.model.Pacote;
 
 import java.util.Collections;
 import java.util.List;

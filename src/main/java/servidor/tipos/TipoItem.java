@@ -1,4 +1,4 @@
-package tipos;
+package servidor.tipos;
 
 public enum TipoItem {
     HOTEL,

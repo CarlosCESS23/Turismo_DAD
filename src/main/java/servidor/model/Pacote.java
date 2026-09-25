@@ -1,6 +1,6 @@
-package model;
+package servidor.model;
 
-import tipos.TipoItem;
+import servidor.tipos.TipoItem;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,42 +9,43 @@ import java.util.stream.Collectors;
 public class Pacote {
     private String origem;
     private String destino;
-    private List<Item> listas_itens;
+    private List<Item> itens;
     private double valorTotal;
 
     public Pacote(){
-        listas_itens = new ArrayList<Item>();
+        itens = new ArrayList<Item>();
     }
 
     public Pacote(String origem,String destino){
-        this.listas_itens = new ArrayList<>();
+        this.itens = new ArrayList<>();
         this.destino = destino;
         this.origem = origem;
     }
 
     public List<Item> getListasItens() {
-        return listas_itens;
+        return itens;
     }
 
-    public void setListasItens(List<Item> listas_itens) {
-        this.listas_itens = listas_itens;
+    public void setListasItens(List<Item> itens) {
+        this.itens = itens;
     }
 
     public void adicionarItem(Item item){
-        this.listas_itens.add(item);
+        this.itens.add(item);
     }
+
     public void removerItem(Item item){
-        this.listas_itens.remove(item);
+        this.itens.remove(item);
     }
 
     public double getValorTotal(){
-        double valorTotal = this.listas_itens.stream()
+        double valorTotal = this.itens.stream()
                 .mapToDouble(Item::getValor).sum();
         return valorTotal;
     }
 
     public List<Item> ListarTipos(TipoItem tipo){
-        List<Item> listaSelecionado = this.listas_itens.stream()
+        List<Item> listaSelecionado = this.itens.stream()
                 .filter(lista -> lista.getTipo() == tipo)
                 .collect(Collectors.toList());
 
@@ -66,7 +67,7 @@ public class Pacote {
         return "\nPacote{" +
                 "origem='" + origem + '\'' +
                 ", destino='" + destino + '\'' +
-                ",\n listas_itens=" + listas_itens +
+                ",\n itens=" + itens +
                 ",\n valorTotal=" + getValorTotal() +
                 '}';
     }

@@ -1,6 +1,4 @@
-package repository;
-
-import model.Pacote;
+package servidor.repository;
 
 import java.util.List;
 
