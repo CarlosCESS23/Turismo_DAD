@@ -1,13 +1,13 @@
 package cliente;
 
-import model.PassagemAerea;
+import exceptions.RegistroDuplicadoException;
+import model.Reserva;
 import utils.IPassagemAerea;
 
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
-import java.util.List;
 
 public class Cliente {
     public static void main(String[] args) {
@@ -16,24 +16,32 @@ public class Cliente {
 
         try {
             Registry registro = LocateRegistry.getRegistry(host, porta);
-
-            // Busca o serviço específico pelo nome exato registrado no Servidor (Lookup)
             String nomeServico = "rmi://" + host + ":" + porta + "/passagemAerea";
             IPassagemAerea servico = (IPassagemAerea) registro.lookup(nomeServico);
 
-            System.out.println("--- CONECTADO AO SERVIDOR ---");
+            // Cria uma reserva atrelada a um pacote
+            Reserva reserva = new Reserva("PAC-994", "123.456.789-00", "Macapá (MCP)");
 
-            // Invoca os métodos remotos como se fossem locais
+            System.out.println("--- INICIANDO TESTE DE INSERÇÃO E DUPLICIDADE ---\n");
 
-            System.out.println("\nVoos disponíveis a partir de Manaus:");
-            List<PassagemAerea> passagens = servico.listar();
-            for (PassagemAerea p : passagens) {
-                System.out.println(p.getDestino() + " - R$ " + p.getPreco());
-            }
+            // Tentativa com o ID da Reserva
+            System.out.println("[TENTATIVA 1] Enviando requisição para salvar reserva ID: " + reserva.getIdPacote());
+            servico.registrarReserva(reserva);
+            System.out.println("Reserva confirmada com sucesso!\n");
+
+            // Simulação de retransmissão por instabilidade de rede
+            System.out.println("...simulando instabilidade de rede e reenvio do pacote...\n");
+
+            // Outra Tentativa: aciona a RegistroDuplicadoException no servidor
+            System.out.println("[TENTATIVA 2] Reenviando a mesma requisição ID: " + reserva.getIdPacote());
+            servico.registrarReserva(reserva);
+            System.out.println("Reserva confirmada com sucesso! (Isso não deve ser impresso)");
+
+        } catch (RegistroDuplicadoException e) {
+            System.out.println("(EXCEÇÃO CAPTURADA): " + e.getMessage());
 
         } catch (RemoteException | NotBoundException e) {
-            System.out.println("Erro na comunicação com o servidor: " + e.getMessage());
-            e.printStackTrace();
+            System.out.println("Erro crítico de conexão RMI: " + e.getMessage());
         }
     }
 }

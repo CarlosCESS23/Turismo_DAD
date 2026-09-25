@@ -1,6 +1,8 @@
 package service;
 
+import exceptions.RegistroDuplicadoException;
 import model.PassagemAerea;
+import model.Reserva;
 import utils.IPassagemAerea;
 
 import java.rmi.RemoteException;
@@ -26,5 +28,10 @@ public class PassagemAereaServiceImpl extends UnicastRemoteObject implements IPa
     @Override
     public PassagemAerea buscarPassagemAerea(String destino) throws RemoteException {
         return service.buscarPassagemAerea(destino);
+    }
+
+    @Override
+    public void registrarReserva(Reserva reserva) throws RemoteException, RegistroDuplicadoException {
+        service.registrarReserva(reserva);
     }
 }
