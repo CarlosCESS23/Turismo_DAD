@@ -1,5 +1,6 @@
 package service;
 
+import exception.RegistroDuplicadoException;
 import model.Hotel;
 
 import java.rmi.Remote;
@@ -9,7 +10,7 @@ import java.util.List;
 
 public interface IHotelService extends Remote {
 
-    public void adicionar(Hotel hotel) throws RemoteException;
+    public void adicionar(Hotel hotel) throws RemoteException, RegistroDuplicadoException;
 
     public List<Hotel> getLista() throws RemoteException;
 

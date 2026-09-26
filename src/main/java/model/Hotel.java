@@ -5,14 +5,24 @@ import java.io.Serializable;
 public class Hotel implements Serializable {
 
     private static final long serialVersionUID = 1L;
+    private int idPacoteTuristico;
     private String cidade;
     private double valorDiaria;
 
     public Hotel(){}
 
-    public Hotel(String cidade, double valorDiaria) {
+    public Hotel(int idPacoteTuristico,String cidade, double valorDiaria) {
+        this.idPacoteTuristico = idPacoteTuristico;
         this.cidade = cidade;
         this.valorDiaria = valorDiaria;
+    }
+
+    public int getIdPacoteTuristico() {
+        return idPacoteTuristico;
+    }
+
+    public void setIdPacoteTuristico(int idPacoteTuristico) {
+        this.idPacoteTuristico = idPacoteTuristico;
     }
 
     public String getCidade() {
@@ -34,7 +44,8 @@ public class Hotel implements Serializable {
     @Override
     public String toString() {
         return "Hotel{" +
-                "cidade='" + cidade + '\'' +
+                "idPacoteTuristico=" + idPacoteTuristico +
+                ", cidade='" + cidade + '\'' +
                 ", valorDiaria=" + valorDiaria +
                 '}';
     }
