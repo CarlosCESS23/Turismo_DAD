@@ -14,7 +14,7 @@ public interface IHotelService extends Remote {
 
     public List<Hotel> getLista() throws RemoteException;
 
-    double calcularHospedagem(String cidade, LocalDate entrada, LocalDate saida) throws RemoteException;
+    double calcularHospedagem(String cidade, LocalDate entrada, LocalDate saida, double taxa) throws RemoteException;
 
     double consultarHotel(String cidade) throws RemoteException;
 }

@@ -15,11 +15,11 @@ public class HotelServiceImpl extends UnicastRemoteObject implements IHotelServi
     List<Hotel> hoteis = new ArrayList<>();
 
     public void adicionarHoteis(){
-        this.hoteis.add(new Hotel(1,"Boa Vista", 250.00));
-        this.hoteis.add(new Hotel(2,"Belém", 100.00));
-        this.hoteis.add(new Hotel(3,"Macapá", 220.00));
-        this.hoteis.add(new Hotel(4,"Palmas", 150.00));
-        this.hoteis.add(new Hotel(5,"Porto Velho", 120.00));
+        this.hoteis.add(new Hotel(1,"BEL", 250.00, 10.00));
+        this.hoteis.add(new Hotel(2,"BVB", 100.00,10.00));
+        this.hoteis.add(new Hotel(3,"MCP", 220.00, 10.00));
+        this.hoteis.add(new Hotel(4,"PMW", 150.00, 10.00));
+        this.hoteis.add(new Hotel(5,"PVH", 120.00, 10.00));
     }
 
     public HotelServiceImpl() throws RemoteException{
@@ -41,13 +41,16 @@ public class HotelServiceImpl extends UnicastRemoteObject implements IHotelServi
         return this.hoteis;
     }
 
-    public double calcularHospedagem(String cidade, LocalDate entrada, LocalDate saida) throws RemoteException{
+    public double calcularHospedagem(String cidade, LocalDate entrada, LocalDate saida, double taxa) throws RemoteException{
         long dias = ChronoUnit.DAYS.between(entrada, saida);
 
         for(Hotel h: hoteis){
             if(h.getCidade().equalsIgnoreCase(cidade)){
-                return h.getValorDiaria() * dias;
+                double total = h.getValorDiaria() * dias;
+                total = total * h.getTaxa();
+                return total;
             }
+
         }
         throw new RemoteException();
     }
