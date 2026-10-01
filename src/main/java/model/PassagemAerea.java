@@ -12,6 +12,8 @@ public class PassagemAerea implements Serializable {
 
     public double preco;
 
+    public String categoria;
+
     public PassagemAerea(String origem, String destino, double preco) {
         PassagemAerea.origem = origem;
         this.destino = destino;
@@ -47,5 +49,13 @@ public class PassagemAerea implements Serializable {
         return "Origem= " + origem +
                 "\nDestino= " + destino +
                 "\nPreco= " + String.format("%.2f", preco) ;
+    }
+
+    public String getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
     }
 }
