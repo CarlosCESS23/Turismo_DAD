@@ -1,4 +1,4 @@
-package PastaYasmim.pacote.ennum;
+package servidor.utils;
 
 public enum ItemServico {
     AEREO,

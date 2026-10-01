@@ -1,15 +1,22 @@
 package servidor.model;
 
-import servidor.tipos.TipoItem;
 
+import servidor.utils.ItemServico;
 
-public class Item {
+import java.io.Serializable;
+
+public class Item implements Serializable {
+    private final long serialVersionUID = 1l;
     private double valor;
-    private TipoItem tipo;
+    private ItemServico tipo;
 
-    public Item(double valor, TipoItem tipo){
+    public Item(double valor, ItemServico tipo) {
         this.valor = valor;
         this.tipo = tipo;
+    }
+
+    public Item() {
+
     }
 
     public double getValor() {
@@ -20,11 +27,11 @@ public class Item {
         this.valor = valor;
     }
 
-    public TipoItem getTipo() {
+    public ItemServico getTipo() {
         return tipo;
     }
 
-    public void setTipo(TipoItem tipo) {
+    public void setTipo(ItemServico tipo) {
         this.tipo = tipo;
     }
 

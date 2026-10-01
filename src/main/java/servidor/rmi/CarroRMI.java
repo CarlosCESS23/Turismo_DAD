@@ -1,11 +1,11 @@
-//package PastaYasmim.pacote.client;
-//
+//package servidor.rmi;
 //
 //import model.LocalAluguel;
 //import rmi.IAluguelService;
-//import turismo.pacote.ennum.ItemServico;
-//import turismo.pacote.model.Item;
-//import turismo.pacote.model.Pacote;
+//import servidor.model.Item;
+//import servidor.model.Pacote;
+//import servidor.utils.ItemServico;
+//
 //
 //import java.rmi.NotBoundException;
 //import java.rmi.RemoteException;
@@ -14,29 +14,29 @@
 //
 //public class CarroRMI {
 //    public static void main(String[] args) throws RemoteException, NotBoundException {
-//        String host = "10.100.32.85";
-//        int porta = 1001;
+//        String host = "192.168.15.74";
+//        int porta = 2010;
 //
-//        Registry registro = LocateRegistry.getRegistry(host,porta);
+//        Registry registro = LocateRegistry.getRegistry(host, porta);
 //
 //        String[] listaCatalogo = registro.list();
 //
-//        for (String item : listaCatalogo){
+//        for (String item : listaCatalogo) {
 //            System.out.println(item);
 //        }
 //
-//        IAluguelService aluguelService = (IAluguelService) registro.lookup("rmi://10.100.32.85:1001/aluguel");
+//        IAluguelService aluguelService = (IAluguelService) registro.lookup("rmi://" + host + ":" + porta + "/aluguel");
 //
 //        LocalAluguel carroOrigem = aluguelService.getLocalPorNome("BEL");
 //
 //
-//        Pacote pacote= new Pacote();
+////        Pacote pacote = new Pacote(, "Pará", 1, 2);
 //        Item item = new Item();
 //        item.setTipo(ItemServico.CARRO);
 //        item.setValor(carroOrigem.getValorDiaria());
-//        pacote.adicionarItens(item);
+//        pacote.adicionarItem(item);
 //
-//        System.out.println(pacote.getTotal());
+//        System.out.println(pacote.getValorTotal());
 //
 //    }
 //}
