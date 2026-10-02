@@ -48,6 +48,7 @@ public class PassagemAerea implements Serializable {
     public String toString() {
         return "Origem= " + origem +
                 "\nDestino= " + destino +
+                "\nCategoria= " + categoria +
                 "\nPreco= " + String.format("%.2f", preco) ;
     }
 
